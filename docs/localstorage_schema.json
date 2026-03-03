@@ -1,0 +1,4 @@
+*   **Persistence:** Encapsulates all interactions with `localStorage`.
+*   **Schema Enforcement:** Ensures data conforms to `docs/localstorage_schema.json`.
+*   **API:** Provides methods like `loadSettings()`, `saveSettings(settings)`, `clearSettings()`.
+*   **Key:** Uses a consistent key (e.g., `pomodoroApp_settings`) to store all application settings.
