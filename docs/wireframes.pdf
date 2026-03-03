@@ -1,7 +1,172 @@
+=== ARTIFACT: docs/wireframes.pdf ===
+As an AI agent, I cannot directly generate a `.pdf` file. However, I can provide a comprehensive, detailed textual description of the wireframes, outlining the layout, components, and interactions for the Pomodoro App's MVP as if it were a visual document. This description aims to capture the essence of a Jony-inspired minimalist design, focusing on clarity, purpose, and intuitive user experience.
+
+---
+
+# Pomodoro App: Core User Interface Wireframes (MVP)
+
+## Document Purpose
+This document details the low-fidelity wireframes for the Pomodoro App's Minimal Viable Product (MVP), focusing on the core timer functionality and settings. The design prioritizes clarity, simplicity, and a distraction-free experience, adhering to the principles of essentialism.
+
+## Design Philosophy
+The interface is designed to be calm, focused, and immediately understandable. Every element serves a purpose; gratuitous decoration is omitted. Ample whitespace provides breathing room, allowing the core timer and its controls to remain prominent. Typography is chosen for legibility and visual hierarchy.
+
+---
+
+## 1. Main Timer View (Default / Idle State)
+
+### Layout: Centered & Minimal
+*   **Overall:** A single, vertically and horizontally centered container, suitable for desktop and responsive for mobile. Background is neutral, calming.
+*   **Header (Top-Left):**
+    *   `[App Logo/Title: Pomodoro]` - Simple text or minimal icon.
+*   **Settings Icon (Top-Right):**
+    *   `[Gear Icon]` - Small, unobtrusive, leads to Settings.
+*   **Main Display (Center, Large):**
+    *   `[Time: 25:00]` - Large, bold, monospaced font for maximum legibility. Default work session time.
+    *   `[Session Type: Work]` - Smaller text below the time, indicating the current session type.
+    *   `[Pomodoros Completed: 0/4]` - Even smaller text, subtly indicating progress towards a long break.
+*   **Primary Action Button (Below Timer, Prominent):**
+    *   `[Button: START]` - Large, clear call-to-action button, distinct in color/style.
+*   **Secondary Action Buttons (Hidden/Inactive):**
+    *   No other action buttons visible in the idle state, reducing cognitive load.
+
+### Interactions:
+*   Click `START`: Initiates a Work Session.
+*   Click `Gear Icon`: Navigates to the Settings View.
+
+---
+
+## 2. Main Timer View (Work Session - Active State)
+
+### Layout: Consistent with Idle, Dynamic Content
+*   **Overall:** Same centered layout.
+*   **Main Display (Center, Large):**
+    *   `[Time: 24:30]` - Countdown actively decreasing.
+    *   `[Session Type: Work]` - Unchanged.
+    *   `[Pomodoros Completed: 1/4]` - Updates as sessions complete.
+*   **Primary Action Buttons (Below Timer, Contextual):**
+    *   `[Button: PAUSE]` - Replaces `START`.
+    *   `[Button: RESET SESSION]` - Smaller, secondary button, allows restarting current `Work` session from full duration.
+*   **Settings Icon (Top-Right):**
+    *   `[Gear Icon]` - Still present. Allows settings access, pausing the timer if active.
+
+### Interactions:
+*   Timer counts down.
+*   Click `PAUSE`: Transitions to Work Session - Paused State.
+*   Click `RESET SESSION`: Resets the current Work session to its initial duration and restarts the countdown.
+*   Click `Gear Icon`: Navigates to Settings (timer should implicitly pause or user warned).
+*   Timer reaches `00:00`: Triggers audible/visual notification. Automatically transitions to Short Break - Active State (or Long Break, if 'N' sessions completed).
+
+---
+
+## 3. Main Timer View (Work Session - Paused State)
+
+### Layout: Visual Indication of Pause
+*   **Overall:** Same centered layout.
+*   **Main Display (Center, Large):**
+    *   `[Time: 12:15 (PAUSED)]` - Time remains static. "PAUSED" indicator added, perhaps in a subtle, distinct color or smaller text.
+    *   `[Session Type: Work]` - Unchanged.
+    *   `[Pomodoros Completed: 1/4]` - Unchanged.
+*   **Primary Action Buttons (Below Timer, Contextual):**
+    *   `[Button: RESUME]` - Replaces `PAUSE`.
+    *   `[Button: RESET SESSION]` - Still present, resets current session.
+    *   `[Button: RESET CYCLE]` - New, secondary button. Resets entire Pomodoro sequence (session count, current timer).
+*   **Settings Icon (Top-Right):**
+    *   `[Gear Icon]` - Still present.
+
+### Interactions:
+*   Click `RESUME`: Transitions back to Work Session - Active State, continuing countdown.
+*   Click `RESET SESSION`: Resets the current Work session to its initial duration and transitions to Work Session - Active State.
+*   Click `RESET CYCLE`: Resets all session counters and timers, transitioning to Main Timer - Idle State (Work).
+*   Click `Gear Icon`: Navigates to Settings.
+
+---
+
+## 4. Main Timer View (Short Break / Long Break - Active State)
+
+### Layout: Distinct Visual Cues for Breaks
+*   **Overall:** Same centered layout. Background color or a subtle border might change to visually distinguish break states.
+*   **Main Display (Center, Large):**
+    *   `[Time: 05:00]` (or `15:00` for Long Break) - Countdown decreasing.
+    *   `[Session Type: Short Break]` (or `Long Break`) - Clearly indicates break type.
+    *   `[Pomodoros Completed: 1/4]` (if Short Break, or `RESET` if Long Break has completed a cycle).
+*   **Primary Action Buttons (Below Timer, Contextual):**
+    *   `[Button: SKIP BREAK]` - Prominent, allows user to end break early.
+    *   `[Button: PAUSE]` - Allows pausing the break.
+    *   `[Button: RESET SESSION]` - Resets the current break session.
+*   **Settings Icon (Top-Right):**
+    *   `[Gear Icon]` - Still present.
+
+### Interactions:
+*   Timer counts down.
+*   Click `SKIP BREAK`: Transitions immediately to Work Session - Active State. If Long Break, also resets Pomodoro cycle counter.
+*   Click `PAUSE`: Transitions to Break Session - Paused State.
+*   Click `RESET SESSION`: Resets the current Break session to its initial duration and restarts the countdown.
+*   Click `Gear Icon`: Navigates to Settings.
+*   Timer reaches `00:00`: Triggers audible/visual notification. Automatically transitions to Work Session - Active State (resets Pomodoro counter if it was a Long Break).
+
+---
+
+## 5. Main Timer View (Short Break / Long Break - Paused State)
+
+### Layout: Paused State for Breaks
+*   **Overall:** Same centered layout, distinct break styling.
+*   **Main Display (Center, Large):**
+    *   `[Time: 02:30 (PAUSED)]` - Time static, "PAUSED" indicator.
+    *   `[Session Type: Short Break]` (or `Long Break`) - Unchanged.
+    *   `[Pomodoros Completed: 1/4]` (or `RESET`).
+*   **Primary Action Buttons (Below Timer, Contextual):**
+    *   `[Button: SKIP BREAK]` - Still present.
+    *   `[Button: RESUME]` - Replaces `PAUSE`.
+    *   `[Button: RESET SESSION]` - Still present.
+    *   `[Button: RESET CYCLE]` - New, secondary button (similar to Work Paused state).
+*   **Settings Icon (Top-Right):**
+    *   `[Gear Icon]` - Still present.
+
+### Interactions:
+*   Click `SKIP BREAK`: Transitions immediately to Work Session - Active State. If Long Break, also resets Pomodoro cycle counter.
+*   Click `RESUME`: Transitions back to Break Session - Active State, continuing countdown.
+*   Click `RESET SESSION`: Resets the current Break session to its initial duration and transitions to Break Session - Active State.
+*   Click `RESET CYCLE`: Resets all session counters and timers, transitioning to Main Timer - Idle State (Work).
+*   Click `Gear Icon`: Navigates to Settings.
+
+---
+
+## 6. Settings View
+
+### Layout: Simple Form for Configuration
+*   **Overall:** A modal or new screen overlay, still centered, but with a clear form structure. A subtle background blur or overlay might indicate it's a temporary view.
+*   **Header (Top):**
+    *   `[Title: Settings]` - Clearly identifies the section.
+*   **Input Fields (Vertical Stack):**
+    *   `[Label: Work Duration (minutes)]`
+        *   `[Input Field: 25]` - Numerical input, clear current value.
+    *   `[Label: Short Break Duration (minutes)]`
+        *   `[Input Field: 5]` - Numerical input.
+    *   `[Label: Long Break Duration (minutes)]`
+        *   `[Input Field: 15]` - Numerical input.
+    *   `[Label: Long Break Frequency (work sessions)]`
+        *   `[Input Field: 4]` - Numerical input.
+*   **Action Buttons (Bottom):**
+    *   `[Button: SAVE]` - Primary action, applies changes and returns to Main Timer.
+    *   `[Button: CANCEL]` - Secondary action, discards changes and returns to Main Timer.
+
+### Interactions:
+*   User enters numerical values into fields.
+*   Click `SAVE`: Stores settings locally, applies them, and returns to Main Timer (Idle state, or current active state if applicable, but for simplicity, default to Idle).
+*   Click `CANCEL`: Discards any changes and returns to Main Timer (Idle state, or current active state, but default to Idle).
+
+---
+
+## Conclusion
+These wireframes represent a "less but better" approach, providing a clear foundation for the Pomodoro App's core functionality. The focus on minimal design ensures that the user's attention remains on their task, supported by intuitive controls and clear feedback.
+
+---
+
 === ARTIFACT: docs/user_flow_diagrams.drawio ===
 ```xml
-<mxfile host="app.diagrams.net" modified="2023-10-27T10:00:00.000Z" agent="Jony" etag="my-unique-etag" version="21.8.2" type="atlas">
-  <diagram id="PomodoroAppFlow" name="Pomodoro App Core Flow">
+<mxfile host="app.diagrams.net" modified="2023-11-20T10:00:00.000Z" agent="Jony" etag="my-unique-etag" version="21.8.2" type="atlas">
+  <diagram id="PomodoroAppCoreFlow" name="Pomodoro App Core Flow">
     <mxGraphModel dx="1434" dy="799" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
       <root>
         <mxCell id="0" />
@@ -53,10 +218,10 @@
 
         <!-- Notifications -->
         <mxCell id="desktopNotification" value="Desktop Notification" style="html=1;shape=ext;fillColor=#dae8fc;strokeColor=#6c8ebf;ext=triangle;" vertex="1" parent="1">
-          <mxGeometry x="200" y="350" width="100" height="40" as="geometry" />
+          <mxGeometry x="100" y="350" width="100" height="40" as="geometry" />
         </mxCell>
         <mxCell id="audibleNotification" value="Audible Alert" style="html=1;shape=note;whiteSpace=wrap;fillColor=#e1d5e7;strokeColor=#9673a6;" vertex="1" parent="1">
-          <mxGeometry x="200" y="400" width="100" height="40" as="geometry" />
+          <mxGeometry x="100" y="400" width="100" height="40" as="geometry" />
         </mxCell>
 
         <!-- Edges (Transitions) -->
@@ -68,25 +233,26 @@
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
 
+        <!-- Work Session Transitions -->
         <mxCell id="edge3" value="[Pause] Click" style="edgeStyle=orthogonalEdgeStyle;html=1;jettySize=auto;orthogonalLoop=1;exitX=1;exitY=0.5;entryX=0;entryY=0.5;" edge="1" parent="1" source="workActive" target="workPaused">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-
         <mxCell id="edge4" value="[Resume] Click" style="edgeStyle=orthogonalEdgeStyle;html=1;jettySize=auto;orthogonalLoop=1;exitX=0;exitY=0.5;entryX=1;entryY=0.5;" edge="1" parent="1" source="workPaused" target="workActive">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
 
-        <mxCell id="edge5" value="[Reset] Click" style="edgeStyle=orthogonalEdgeStyle;html=1;jettySize=auto;orthogonalLoop=1;" edge="1" parent="1" source="workActive" target="workActive">
+        <mxCell id="edge5" value="[Reset Session] Click" style="edgeStyle=orthogonalEdgeStyle;html=1;jettySize=auto;orthogonalLoop=1;curved=1;" edge="1" parent="1" source="workActive" target="workActive">
           <mxGeometry relative="1" as="geometry">
-            <mxPoint x="420" y="270" as="sourcePoint" />
-            <mxPoint x="420" y="270" as="targetPoint" />
+            <mxPoint x="320" y="290" as="sourcePoint" />
+            <mxPoint x="320" y="290" as="targetPoint" />
             <Array as="points">
-              <mxPoint x="320" y="290" />
-              <mxPoint x="320" y="290" />
+              <mxPoint x="300" y="290" />
+              <mxPoint x="300" y="320" />
+              <mxPoint x="350" y="320" />
             </Array>
           </mxGeometry>
         </mxCell>
-         <mxCell id="edge5b" value="[Reset] Click" style="edgeStyle=orthogonalEdgeStyle;html=1;jettySize=auto;orthogonalLoop=1;" edge="1" parent="1" source="workPaused" target="workActive">
+         <mxCell id="edge5b" value="[Reset Session] Click" style="edgeStyle=orthogonalEdgeStyle;html=1;jettySize=auto;orthogonalLoop=1;" edge="1" parent="1" source="workPaused" target="workActive">
           <mxGeometry relative="1" as="geometry">
             <mxPoint x="620" y="270" as="sourcePoint" />
             <mxPoint x="490" y="270" as="targetPoint" />
@@ -96,254 +262,68 @@
             </Array>
           </mxGeometry>
         </mxCell>
+        <mxCell id="edgeResetCycleWorkActive" value="[Reset Cycle] Click" style="edgeStyle=orthogonalEdgeStyle;html=1;jettySize=auto;orthogonalLoop=1;" edge="1" parent="1" source="workActive" target="idle">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="350" y="300" as="sourcePoint" />
+            <Array as="points">
+              <mxPoint x="330" y="300" />
+              <mxPoint x="330" y="170" />
+              <mxPoint x="350" y="170" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="edgeResetCycleWorkPaused" value="[Reset Cycle] Click" style="edgeStyle=orthogonalEdgeStyle;html=1;jettySize=auto;orthogonalLoop=1;" edge="1" parent="1" source="workPaused" target="idle">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="550" y="300" as="sourcePoint" />
+            <Array as="points">
+              <mxPoint x="530" y="300" />
+              <mxPoint x="530" y="170" />
+              <mxPoint x="490" y="170" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
 
+        <!-- Work to Break Transitions -->
         <mxCell id="edge6" value="Work Session Ends (Audible &amp; Desktop Notif)" style="edgeStyle=orthogonalEdgeStyle;html=1;jettySize=auto;orthogonalLoop=1;" edge="1" parent="1" source="workActive" target="shortBreakActive">
           <mxGeometry relative="1" as="geometry">
             <mxPoint x="420" y="330" as="sourcePoint" />
-            <mxPoint x="420" y="440" as="targetPoint" />
+            <Array as="points">
+              <mxPoint x="420" y="380" />
+              <mxPoint x="420" y="440" />
+            </Array>
           </mxGeometry>
         </mxCell>
         <mxCell id="edge6a" value="Trigger Notif" style="edgeStyle=orthogonalEdgeStyle;html=1;jettySize=auto;orthogonalLoop=1;" edge="1" parent="1" source="workActive" target="desktopNotification">
           <mxGeometry relative="1" as="geometry">
             <mxPoint x="350" y="300" as="sourcePoint" />
-            <mxPoint x="250" y="350" as="targetPoint" />
             <Array as="points">
-              <mxPoint x="350" y="360" />
-              <mxPoint x="250" y="360" />
+              <mxPoint x="300" y="300" />
+              <mxPoint x="150" y="300" />
+              <mxPoint x="150" y="350" />
             </Array>
           </mxGeometry>
         </mxCell>
         <mxCell id="edge6b" value="Trigger Notif" style="edgeStyle=orthogonalEdgeStyle;html=1;jettySize=auto;orthogonalLoop=1;" edge="1" parent="1" source="workActive" target="audibleNotification">
           <mxGeometry relative="1" as="geometry">
             <mxPoint x="350" y="300" as="sourcePoint" />
-            <mxPoint x="250" y="400" as="targetPoint" />
             <Array as="points">
-              <mxPoint x="350" y="410" />
-              <mxPoint x="250" y="410" />
+              <mxPoint x="300" y="300" />
+              <mxPoint x="150" y="300" />
+              <mxPoint x="150" y="400" />
             </Array>
           </mxGeometry>
         </mxCell>
 
+        <!-- Short Break Transitions -->
         <mxCell id="edge7" value="[Pause] Click" style="edgeStyle=orthogonalEdgeStyle;html=1;jettySize=auto;orthogonalLoop=1;exitX=1;exitY=0.5;entryX=0;entryY=0.5;" edge="1" parent="1" source="shortBreakActive" target="shortBreakPaused">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-
         <mxCell id="edge8" value="[Resume] Click" style="edgeStyle=orthogonalEdgeStyle;html=1;jettySize=auto;orthogonalLoop=1;exitX=0;exitY=0.5;entryX=1;entryY=0.5;" edge="1" parent="1" source="shortBreakPaused" target="shortBreakActive">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
 
-        <mxCell id="edge9" value="[Reset] Click" style="edgeStyle=orthogonalEdgeStyle;html=1;jettySize=auto;orthogonalLoop=1;" edge="1" parent="1" source="shortBreakActive" target="shortBreakActive">
+        <mxCell id="edge9" value="[Reset Session] Click" style="edgeStyle=orthogonalEdgeStyle;html=1;jettySize=auto;orthogonalLoop=1;curved=1;" edge="1" parent="1" source="shortBreakActive" target="shortBreakActive">
           <mxGeometry relative="1" as="geometry">
-            <mxPoint x="320" y="460" as="sourcePoint" />
+            <mxPoint x="300" y="460" as="sourcePoint" />
             <Array as="points">
-              <mxPoint x="320" y="460" />
-              <mxPoint x="320" y="460" />
-            </Array>
-          </mxGeometry>
-        </mxCell>
-        <mxCell id="edge9b" value="[Reset] Click" style="edgeStyle=orthogonalEdgeStyle;html=1;jettySize=auto;orthogonalLoop=1;" edge="1" parent="1" source="shortBreakPaused" target="shortBreakActive">
-          <mxGeometry relative="1" as="geometry">
-            <mxPoint x="620" y="440" as="sourcePoint" />
-            <Array as="points">
-              <mxPoint x="620" y="410" />
-              <mxPoint x="420" y="410" />
-            </Array>
-          </mxGeometry>
-        </mxCell>
-
-        <mxCell id="edge10" value="Short Break Ends (Audible &amp; Desktop Notif)" style="edgeStyle=orthogonalEdgeStyle;html=1;jettySize=auto;orthogonalLoop=1;" edge="1" parent="1" source="shortBreakActive" target="workActive">
-          <mxGeometry relative="1" as="geometry">
-            <mxPoint x="420" y="500" as="sourcePoint" />
-            <mxPoint x="420" y="270" as="targetPoint" />
-            <Array as="points">
-              <mxPoint x="420" y="560" />
-              <mxPoint x="280" y="560" />
-              <mxPoint x="280" y="270" />
-            </Array>
-          </mxGeometry>
-        </mxCell>
-         <mxCell id="edge10a" value="Trigger Notif" style="edgeStyle=orthogonalEdgeStyle;html=1;jettySize=auto;orthogonalLoop=1;" edge="1" parent="1" source="shortBreakActive" target="desktopNotification">
-          <mxGeometry relative="1" as="geometry">
-            <mxPoint x="350" y="470" as="sourcePoint" />
-            <mxPoint x="250" y="350" as="targetPoint" />
-            <Array as="points">
-              <mxPoint x="350" y="370" />
-              <mxPoint x="250" y="370" />
-            </Array>
-          </mxGeometry>
-        </mxCell>
-        <mxCell id="edge10b" value="Trigger Notif" style="edgeStyle=orthogonalEdgeStyle;html=1;jettySize=auto;orthogonalLoop=1;" edge="1" parent="1" source="shortBreakActive" target="audibleNotification">
-          <mxGeometry relative="1" as="geometry">
-            <mxPoint x="350" y="470" as="sourcePoint" />
-            <mxPoint x="250" y="400" as="targetPoint" />
-            <Array as="points">
-              <mxPoint x="350" y="420" />
-              <mxPoint x="250" y="420" />
-            </Array>
-          </mxGeometry>
-        </mxCell>
-
-        <mxCell id="edge11" value="Work Session Ends (After N Pomodoros, Audible &amp; Desktop Notif)" style="edgeStyle=orthogonalEdgeStyle;html=1;jettySize=auto;orthogonalLoop=1;" edge="1" parent="1" source="workActive" target="longBreakActive">
-          <mxGeometry relative="1" as="geometry">
-            <mxPoint x="420" y="330" as="sourcePoint" />
-            <mxPoint x="420" y="610" as="targetPoint" />
-            <Array as="points">
-              <mxPoint x="520" y="330" />
-              <mxPoint x="520" y="610" />
-            </Array>
-          </mxGeometry>
-        </mxCell>
-        <mxCell id="edge11a" value="Trigger Notif" style="edgeStyle=orthogonalEdgeStyle;html=1;jettySize=auto;orthogonalLoop=1;" edge="1" parent="1" source="workActive" target="desktopNotification">
-          <mxGeometry relative="1" as="geometry">
-            <mxPoint x="490" y="300" as="sourcePoint" />
-            <mxPoint x="250" y="350" as="targetPoint" />
-            <Array as="points">
-              <mxPoint x="490" y="380" />
-              <mxPoint x="250" y="380" />
-            </Array>
-          </mxGeometry>
-        </mxCell>
-        <mxCell id="edge11b" value="Trigger Notif" style="edgeStyle=orthogonalEdgeStyle;html=1;jettySize=auto;orthogonalLoop=1;" edge="1" parent="1" source="workActive" target="audibleNotification">
-          <mxGeometry relative="1" as="geometry">
-            <mxPoint x="490" y="300" as="sourcePoint" />
-            <mxPoint x="250" y="400" as="targetPoint" />
-            <Array as="points">
-              <mxPoint x="490" y="430" />
-              <mxPoint x="250" y="430" />
-            </Array>
-          </mxGeometry>
-        </mxCell>
-
-        <mxCell id="edge12" value="[Pause] Click" style="edgeStyle=orthogonalEdgeStyle;html=1;jettySize=auto;orthogonalLoop=1;exitX=1;exitY=0.5;entryX=0;entryY=0.5;" edge="1" parent="1" source="longBreakActive" target="longBreakPaused">
-          <mxGeometry relative="1" as="geometry" />
-        </mxCell>
-
-        <mxCell id="edge13" value="[Resume] Click" style="edgeStyle=orthogonalEdgeStyle;html=1;jettySize=auto;orthogonalLoop=1;exitX=0;exitY=0.5;entryX=1;entryY=0.5;" edge="1" parent="1" source="longBreakPaused" target="longBreakActive">
-          <mxGeometry relative="1" as="geometry" />
-        </mxCell>
-
-        <mxCell id="edge14" value="[Reset] Click" style="edgeStyle=orthogonalEdgeStyle;html=1;jettySize=auto;orthogonalLoop=1;" edge="1" parent="1" source="longBreakActive" target="longBreakActive">
-          <mxGeometry relative="1" as="geometry">
-            <mxPoint x="320" y="630" as="sourcePoint" />
-            <Array as="points">
-              <mxPoint x="320" y="630" />
-              <mxPoint x="320" y="630" />
-            </Array>
-          </mxGeometry>
-        </mxCell>
-         <mxCell id="edge14b" value="[Reset] Click" style="edgeStyle=orthogonalEdgeStyle;html=1;jettySize=auto;orthogonalLoop=1;" edge="1" parent="1" source="longBreakPaused" target="longBreakActive">
-          <mxGeometry relative="1" as="geometry">
-            <mxPoint x="620" y="610" as="sourcePoint" />
-            <Array as="points">
-              <mxPoint x="620" y="580" />
-              <mxPoint x="420" y="580" />
-            </Array>
-          </mxGeometry>
-        </mxCell>
-
-        <mxCell id="edge15" value="Long Break Ends (Audible &amp; Desktop Notif, Pomodoro Counter Resets)" style="edgeStyle=orthogonalEdgeStyle;html=1;jettySize=auto;orthogonalLoop=1;" edge="1" parent="1" source="longBreakActive" target="workActive">
-          <mxGeometry relative="1" as="geometry">
-            <mxPoint x="420" y="670" as="sourcePoint" />
-            <mxPoint x="420" y="270" as="targetPoint" />
-            <Array as="points">
-              <mxPoint x="420" y="730" />
-              <mxPoint x="240" y="730" />
-              <mxPoint x="240" y="270" />
-            </Array>
-          </mxGeometry>
-        </mxCell>
-         <mxCell id="edge15a" value="Trigger Notif" style="edgeStyle=orthogonalEdgeStyle;html=1;jettySize=auto;orthogonalLoop=1;" edge="1" parent="1" source="longBreakActive" target="desktopNotification">
-          <mxGeometry relative="1" as="geometry">
-            <mxPoint x="350" y="640" as="sourcePoint" />
-            <mxPoint x="250" y="350" as="targetPoint" />
-            <Array as="points">
-              <mxPoint x="350" y="390" />
-              <mxPoint x="250" y="390" />
-            </Array>
-          </mxGeometry>
-        </mxCell>
-        <mxCell id="edge15b" value="Trigger Notif" style="edgeStyle=orthogonalEdgeStyle;html=1;jettySize=auto;orthogonalLoop=1;" edge="1" parent="1" source="longBreakActive" target="audibleNotification">
-          <mxGeometry relative="1" as="geometry">
-            <mxPoint x="350" y="640" as="sourcePoint" />
-            <mxPoint x="250" y="400" as="targetPoint" />
-            <Array as="points">
-              <mxPoint x="350" y="440" />
-              <mxPoint x="250" y="440" />
-            </Array>
-          </mxGeometry>
-        </mxCell>
-
-        <mxCell id="edge16" value="[Skip Break] Click" style="edgeStyle=orthogonalEdgeStyle;html=1;jettySize=auto;orthogonalLoop=1;" edge="1" parent="1" source="shortBreakActive" target="workActive">
-          <mxGeometry relative="1" as="geometry">
-            <mxPoint x="490" y="470" as="sourcePoint" />
-            <Array as="points">
-              <mxPoint x="520" y="470" />
-              <mxPoint x="520" y="300" />
-            </Array>
-          </mxGeometry>
-        </mxCell>
-        <mxCell id="edge16b" value="[Skip Break] Click" style="edgeStyle=orthogonalEdgeStyle;html=1;jettySize=auto;orthogonalLoop=1;" edge="1" parent="1" source="shortBreakPaused" target="workActive">
-          <mxGeometry relative="1" as="geometry">
-            <mxPoint x="620" y="470" as="sourcePoint" />
-            <Array as="points">
-              <mxPoint x="720" y="470" />
-              <mxPoint x="720" y="300" />
-              <mxPoint x="490" y="300" />
-            </Array>
-          </mxGeometry>
-        </mxCell>
-
-        <mxCell id="edge17" value="[Skip Break] Click (Pomodoro Counter Resets)" style="edgeStyle=orthogonalEdgeStyle;html=1;jettySize=auto;orthogonalLoop=1;" edge="1" parent="1" source="longBreakActive" target="workActive">
-          <mxGeometry relative="1" as="geometry">
-            <mxPoint x="490" y="640" as="sourcePoint" />
-            <Array as="points">
-              <mxPoint x="520" y="640" />
-              <mxPoint x="520" y="310" />
-            </Array>
-          </mxGeometry>
-        </mxCell>
-        <mxCell id="edge17b" value="[Skip Break] Click (Pomodoro Counter Resets)" style="edgeStyle=orthogonalEdgeStyle;html=1;jettySize=auto;orthogonalLoop=1;" edge="1" parent="1" source="longBreakPaused" target="workActive">
-          <mxGeometry relative="1" as="geometry">
-            <mxPoint x="620" y="640" as="sourcePoint" />
-            <Array as="points">
-              <mxPoint x="740" y="640" />
-              <mxPoint x="740" y="310" />
-              <mxPoint x="490" y="310" />
-            </Array>
-          </mxGeometry>
-        </mxCell>
-
-        <mxCell id="edge18" value="[Settings] Click" style="edgeStyle=orthogonalEdgeStyle;html=1;jettySize=auto;orthogonalLoop=1;" edge="1" parent="1" source="idle" target="settings">
-          <mxGeometry relative="1" as="geometry">
-            <mxPoint x="490" y="170" as="sourcePoint" />
-            <Array as="points">
-              <mxPoint x="520" y="170" />
-              <mxPoint x="520" y="410" />
-              <mxPoint x="780" y="410" />
-            </Array>
-          </mxGeometry>
-        </mxCell>
-        <mxCell id="edge18b" value="[Settings] Click" style="edgeStyle=orthogonalEdgeStyle;html=1;jettySize=auto;orthogonalLoop=1;" edge="1" parent="1" source="workActive" target="settings">
-          <mxGeometry relative="1" as="geometry">
-            <mxPoint x="490" y="300" as="sourcePoint" />
-            <Array as="points">
-              <mxPoint x="530" y="300" />
-              <mxPoint x="530" y="410" />
-              <mxPoint x="780" y="410" />
-            </Array>
-          </mxGeometry>
-        </mxCell>
-        <mxCell id="edge18c" value="[Settings] Click" style="edgeStyle=orthogonalEdgeStyle;html=1;jettySize=auto;orthogonalLoop=1;" edge="1" parent="1" source="shortBreakActive" target="settings">
-          <mxGeometry relative="1" as="geometry">
-            <mxPoint x="490" y="470" as="sourcePoint" />
-            <Array as="points">
-              <mxPoint x="540" y="470" />
-              <mxPoint x="540" y="410" />
-              <mxPoint x="780" y="410" />
-            </Array>
-          </mxGeometry>
-        </mxCell>
-        <mxCell id="edge18d" value="[Settings] Click" style="edgeStyle=orthogonalEdgeStyle;html=1;jettySize=auto;orthogonalLoop=1;" edge="1" parent="1" source="longBreakActive" target="settings">
-          <mxGeometry relative="1" as="geometry">
-            <mxPoint x="490" y="640" as="sourcePoint" />
-            <Array as="points
+              <mxPoint
