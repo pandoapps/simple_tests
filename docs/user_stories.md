@@ -1,8 +1,6 @@
-*   **As a user who configures my preferred settings,**
-*   **I want my custom durations and long break frequency to be saved locally,**
-*   **so that I don't have to re-enter them every time I open the app.**
-    *   **Acceptance Criteria:**
-        *   All configurable settings are stored in the browser's local storage.
-        *   Upon revisiting the app, previously saved settings are automatically loaded and applied.
+*   **Custom Durations:** Users can customize the default durations for work sessions, short breaks, and long breaks.
+*   **Long Break Frequency:** Users can configure how many work sessions occur before a long break.
+*   **Local Settings Persistence:** All user-defined settings are saved locally within the browser, so they persist across sessions.
 
----
+### 5.4 Basic User Interface
+*   A clean, minimal, and intuitive user interface focused solely on the timer and its immediate controls.
