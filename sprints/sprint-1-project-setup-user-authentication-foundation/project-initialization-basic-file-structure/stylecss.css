@@ -1,13 +1,25 @@
-Okay, "let's just build it and see!" Here are the initial files, ready to be pushed.
-
 ```html
 <!-- index.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <script src="app.js"></script>
+</body>
+</html>
 ```
 
 ```css
 /* style.css */
+/* Empty for initial setup */
 ```
 
 ```javascript
 // app.js
+// Empty for initial setup
 ```
