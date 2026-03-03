@@ -1,1 +1,1 @@
-# Pomodoro App: Project Scope - Sprint 1 (MVP)
+The Pomodoro App aims to help individuals improve their focus, productivity, and time management by implementing the Pomodoro Technique. In a world of constant distractions, our vision is to provide a simple, elegant, and effective tool that empowers users to concentrate on tasks for dedicated periods, take regular short breaks, and enhance their overall work-life balance. This document outlines the scope for the Minimal Viable Product (MVP), focusing on the foundational Pomodoro mechanics.
