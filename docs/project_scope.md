@@ -1,0 +1,1 @@
+# Pomodoro App: Project Scope - Sprint 1 (MVP)
