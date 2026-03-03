@@ -1,4 +1,28 @@
-*   **Persistence:** Encapsulates all interactions with `localStorage`.
-*   **Schema Enforcement:** Ensures data conforms to `docs/localstorage_schema.json`.
-*   **API:** Provides methods like `loadSettings()`, `saveSettings(settings)`, `clearSettings()`.
-*   **Key:** Uses a consistent key (e.g., `pomodoroApp_settings`) to store all application settings.
+### 5.1 Data Structure (Schema in `docs/localstorage_schema.json`)
+All user-configurable settings will be stored as a single JSON object under a specific key in LocalStorage. This approach simplifies retrieval and updates.
+
+**Key:** `pomodoroApp_settings`
+
+**Structure:**
+```json
+{
+  "workDurationMinutes": 25,
+  "shortBreakDurationMinutes": 5,
+  "longBreakDurationMinutes": 15,
+  "longBreakFrequencySessions": 4
+}
+```
+
+### 5.2 Persistence Module (`src/utils/localStorage.js` - conceptual)
+A dedicated utility module will encapsulate all interactions with LocalStorage to:
+*   **Load Settings:** Retrieve the `pomodoroApp_settings` object. If not found or corrupted, return default values.
+*   **Save Settings:** Persist the current settings object.
+*   **Schema Enforcement/Validation:** Before saving or after loading, validate the data against the `docs/localstorage_schema.json` to ensure integrity. This prevents application crashes from malformed data.
+*   **Error Handling:** Gracefully handle potential `localStorage` access issues (e.g., storage full, security restrictions).
+
+### 5.3 Default Values
+If no settings are found in LocalStorage, the application will initialize with the following defaults, as specified in `project_scope.md`:
+*   Work Duration: 25 minutes
+*   Short Break Duration: 5 minutes
+*   Long Break Duration: 15 minutes
+*   Long Break Frequency: 4 work sessions
