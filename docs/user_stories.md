@@ -1,3 +1,8 @@
-# Pomodoro App: User Stories - Sprint 1: Core Mechanics
+*   **As a user who configures my preferred settings,**
+*   **I want my custom durations and long break frequency to be saved locally,**
+*   **so that I don't have to re-enter them every time I open the app.**
+    *   **Acceptance Criteria:**
+        *   All configurable settings are stored in the browser's local storage.
+        *   Upon revisiting the app, previously saved settings are automatically loaded and applied.
 
-This document outlines the initial set of user stories focusing on the core Pomodoro timer functionality for the Minimal Viable Product (MVP).
+---
